@@ -1,3 +1,4 @@
+import config from './config'
 import {initMixin} from './init'
 import {routerMixin} from './router'
 import {renderMixin} from './render'
@@ -15,7 +16,10 @@ function ready(callback) {
     return setTimeout(callback, 0)
   }
 
-  document.addEventListener('DOMContentLoaded', callback)
+  const cfg = config()
+  const evt = cfg.initEvent || 'DOMContentLoaded'
+
+  document.addEventListener(evt, callback)
 }
 
 function Docsify() {
